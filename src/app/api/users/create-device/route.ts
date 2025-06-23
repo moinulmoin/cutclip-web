@@ -3,19 +3,20 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    const { deviceId, osVersion, model } = await request.json();
+    const { deviceId } = await request.json();
 
     // Validate required fields
     if (!deviceId) {
-      return NextResponse.json({ error: "Device ID is required" }, { status: 400 });
+      return NextResponse.json(
+        { success: false, message: "Device ID is required", data: null },
+        { status: 400 }
+      );
     }
 
-    // Check if device exists and include user data
+    // Create the device
     const device = await prisma.device.create({
       data: {
         deviceId,
-        osVersion: osVersion || null,
-        model: model || null
       }
     });
 
@@ -24,8 +25,12 @@ export async function POST(request: NextRequest) {
       message: "Device created successfully",
       data: device
     });
+
   } catch (error) {
-    console.error("Error checking device ID:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    console.error("Error creating device:", error);
+    return NextResponse.json(
+      { success: false, message: "Internal server error", data: null },
+      { status: 500 }
+    );
   }
 }

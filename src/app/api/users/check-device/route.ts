@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     // Validate required parameter
     if (!deviceId) {
       return NextResponse.json(
-        { error: 'Device ID parameter is required' },
+        { success: false, message: 'Device ID parameter is required', data: null },
         { status: 400 }
       )
     }
@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
     if (device) {
       return NextResponse.json({
         success: true,
-        message: 'Device ID found in database',
+        message: 'Device found',
         data: {
           id: device.id,
           deviceId: device.deviceId,
@@ -50,8 +50,8 @@ export async function GET(request: NextRequest) {
       })
     } else {
       return NextResponse.json({
-        success: true,
-        message: 'Device ID not found in database',
+        success: false,
+        message: 'Device not found',
         data: null
       })
     }
@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Error checking device ID:', error)
     return NextResponse.json(
-      { success: false, message: 'Internal server error' },
+      { success: false, message: 'Internal server error', data: null },
       { status: 500 }
     )
   }

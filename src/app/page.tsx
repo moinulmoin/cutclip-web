@@ -124,7 +124,7 @@ export default function Home() {
                 alt="CutClip Demo"
                 width={500}
                 height={500}
-                className="rounded-2xl"
+                className="rounded-lg"
               />
               <p className="text-center text-sm text-muted-foreground mt-2">
                 Paste a YouTube link, set the start and end times, and click &quot;Clip Video&quot;.

@@ -8,79 +8,89 @@ export async function PUT(request: NextRequest) {
     // Validate required fields
     if (!deviceId || !license) {
       return NextResponse.json(
-        { error: "Device ID and license key are required" },
+        { success: false, message: "Device ID and license key are required", data: null },
         { status: 400 }
       );
     }
 
-    // Find the device and its associated user
+    // Find the device
     const targetDevice = await prisma.device.findUnique({
       where: { deviceId },
       select: {
+        id: true,
+        deviceId: true,
+        userId: true,
         user: {
           select: {
             license: true
           }
-        },
-        freeCredits: true,
-        deviceId: true
+        }
       }
     });
 
     if (!targetDevice) {
       return NextResponse.json(
-        { error: "Device not found or no associated user" },
+        { success: false, message: "Device not found", data: null },
         { status: 404 }
       );
     }
 
-    if (targetDevice.user?.license && targetDevice.user?.license === license) {
+    // Check if license is already assigned to this device
+    if (targetDevice.user?.license === license) {
       return NextResponse.json(
-        { success: true, message: "License key already exists" },
+        { success: true, message: "License key already assigned to this device", data: null },
         { status: 200 }
       );
     }
 
-    if (!targetDevice.user?.license) {
-      // Check if there's already a user with this license key
-      const existingLicenseUser = await prisma.user.findUnique({
-        where: { license }
+    // Find or create user with this license
+    let user = await prisma.user.findUnique({
+      where: { license }
+    });
+
+    if (!user) {
+      // Create new user with this license
+      user = await prisma.user.create({
+        data: { license }
       });
-
-      if (existingLicenseUser) {
-        const updatedDevice = await prisma.device.update({
-          where: { deviceId },
-          data: {
-            userId: existingLicenseUser.id
-          },
-          select: {
-            deviceId: true,
-            user: {
-              select: {
-                id: true,
-                license: true
-              }
-            }
-          }
-        });
-
-        return NextResponse.json({
-          success: true,
-          message: "User updated successfully and license data merged",
-          data: {
-            device: {
-              deviceId: updatedDevice!.deviceId,
-              user: {
-                id: existingLicenseUser.id,
-                license: existingLicenseUser.license
-              }
-            }
-          }
-        });
-      }
     }
+
+    // Update device to link with the user
+    const updatedDevice = await prisma.device.update({
+      where: { deviceId },
+      data: {
+        userId: user.id
+      },
+      select: {
+        deviceId: true,
+        user: {
+          select: {
+            id: true,
+            license: true
+          }
+        }
+      }
+    });
+
+    return NextResponse.json({
+      success: true,
+      message: "Device updated successfully with license",
+      data: {
+        device: {
+          deviceId: updatedDevice.deviceId,
+          user: {
+            id: updatedDevice.user!.id,
+            license: updatedDevice.user!.license
+          }
+        }
+      }
+    });
+
   } catch (error) {
-    console.error("Error updating user license:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    console.error("Error updating device license:", error);
+    return NextResponse.json(
+      { success: false, message: "Internal server error", data: null },
+      { status: 500 }
+    );
   }
 }
