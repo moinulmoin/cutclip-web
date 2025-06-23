@@ -1,9 +1,17 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 
 export default function SuccessPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Success />
+    </Suspense>
+  );
+}
+
+function Success() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const checkout_id = searchParams.get("checkout_id");

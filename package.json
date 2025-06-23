@@ -7,12 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "docker:build": "docker build -t cutclip-web .",
-    "docker:up": "docker-compose up --build -d",
-    "docker:stop": "docker-compose down",
-    "docker:logs": "docker-compose logs -f",
-    "docker:restart": "docker-compose restart",
-    "docker:clean": "docker system prune -f && docker volume prune -f"
+    "prisma:push": "npx prisma db push",
+    "prisma:generate": "npx prisma generate --no-engine"
   },
   "dependencies": {
     "@polar-sh/nextjs": "^0.4.0",

@@ -28,7 +28,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Generate Prisma client
-RUN pnpm prisma generate
+RUN pnpm prisma db push
 
 # Build the application
 RUN pnpm build
@@ -47,29 +47,15 @@ ENV NEXT_TELEMETRY_DISABLED=1
 # Install pnpm for runtime Prisma operations
 RUN npm install -g pnpm
 
-# Create non-root user for security
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
-
-# Create .next directory with proper permissions
-RUN mkdir .next && chown nextjs:nodejs .next
-
 # Copy built application from builder stage
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
-
-# Install exact version of Prisma CLI for migrations
-RUN pnpm add --global --save-exact "prisma@$(node --print 'require("./node_modules/@prisma/client/package.json").version')"
-
-# Switch to non-root user
-USER nextjs
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
 
 # Expose port
 EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-# Start with Prisma migrations then the application
-CMD sh -c "prisma migrate deploy && node server.js"
+# Start the application
+CMD ["node", "server.js"]
