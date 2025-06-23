@@ -4,13 +4,11 @@ services:
       context: .
       dockerfile: Dockerfile
       target: runner
-    volumes:
-      - database:/app/prisma
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=file:/app/prisma/prod.db
+      - DATABASE_URL=${DATABASE_URL}
       - NEXT_TELEMETRY_DISABLED=1
       - CHECKPOINT_DISABLE=1
       - DISABLE_PRISMA_TELEMETRY=true
@@ -20,7 +18,3 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-
-volumes:
-  database:
-    driver: local
