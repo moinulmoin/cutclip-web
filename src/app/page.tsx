@@ -1,46 +1,47 @@
 import demo from "@/assets/demo.png";
+import logo from "@/assets/logo.png";
 import { AppleIcon } from "@/components/ui/apple-icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { siteConfig } from "@/lib/site-config";
-import { Check, Scissors, Shield, Zap } from "lucide-react";
+import { Check, Shield, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": siteConfig.name,
-  "applicationCategory": "MultimediaApplication",
-  "applicationSubCategory": "Video Editor",
-  "operatingSystem": "macOS",
-  "description": siteConfig.description,
-  "url": siteConfig.url,
-  "downloadUrl": `${siteConfig.url}/download`,
-  "softwareVersion": "1.0",
-  "datePublished": "2024",
-  "author": {
+  name: siteConfig.name,
+  applicationCategory: "MultimediaApplication",
+  applicationSubCategory: "Video Editor",
+  operatingSystem: "macOS",
+  description: siteConfig.description,
+  url: siteConfig.url,
+  downloadUrl: `${siteConfig.url}/download`,
+  softwareVersion: "1.0",
+  datePublished: "2024",
+  author: {
     "@type": "Person",
-    "name": siteConfig.author
+    name: siteConfig.author
   },
-  "offers": [
+  offers: [
     {
       "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "category": "Free Trial",
-      "description": "3 uses total with all features included"
+      price: "0",
+      priceCurrency: "USD",
+      category: "Free Trial",
+      description: "3 uses total with all features included"
     },
     {
       "@type": "Offer",
-      "price": "4.99",
-      "priceCurrency": "USD",
-      "category": "Pro License",
-      "description": "Unlimited clips with priority support"
+      price: "4.99",
+      priceCurrency: "USD",
+      category: "Pro License",
+      description: "Unlimited clips with priority support"
     }
   ],
-  "featureList": [
+  featureList: [
     "One-Click Setup",
     "Native Performance",
     "100% Private",
@@ -48,18 +49,18 @@ const structuredData = {
     "Priority support (Pro)",
     "Future updates included (Pro)"
   ],
-  "screenshot": `${siteConfig.url}/demo.png`,
-  "aggregateRating": {
+  screenshot: `${siteConfig.url}/demo.png`,
+  aggregateRating: {
     "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "5000"
+    ratingValue: "4.9",
+    ratingCount: "5000"
   }
 };
 
 const product = {
   id: process.env.POLAR_PRODUCT_ID!,
   name: "Lifetime License (Personal Use)",
-  price: 4.99,
+  price: 4.99
 };
 
 export default function Home() {
@@ -73,9 +74,7 @@ export default function Home() {
         {/* Hero Section */}
         <div className="container mx-auto px-4 py-16 text-center">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="p-3 bg-primary rounded-2xl">
-              <Scissors className="h-8 w-8 text-primary-foreground" />
-            </div>
+            <Image src={logo} alt="CutClip" width={60} height={60} />
             <h1 className="text-4xl font-bold tracking-tight">CutClip</h1>
           </div>
 
@@ -84,8 +83,8 @@ export default function Home() {
           </h2>
 
           <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto text-balance">
-            The native macOS app that turns any YouTube video into perfect clips in seconds.
-            No more wrestling with complex video editors.
+            The native macOS app that turns any YouTube video into perfect clips in seconds. No more
+            wrestling with complex video editors.
           </p>
 
           {/* Social Proof Numbers */}
@@ -120,7 +119,13 @@ export default function Home() {
           {/* Demo Preview */}
           <div className="max-w-4xl mx-auto mb-20">
             <div className="flex flex-col items-center justify-center">
-              <Image src={demo} alt="CutClip Demo" width={500} height={500} className="rounded-2xl" />
+              <Image
+                src={demo}
+                alt="CutClip Demo"
+                width={500}
+                height={500}
+                className="rounded-2xl"
+              />
               <p className="text-center text-sm text-muted-foreground mt-2">
                 Paste a YouTube link, set the start and end times, and click &quot;Clip Video&quot;.
               </p>
@@ -193,7 +198,9 @@ export default function Home() {
                   <Zap className="h-6 w-6 text-primary" />
                 </div>
                 <h4 className="font-semibold mb-2">One-Click Setup</h4>
-                <p className="text-sm text-muted-foreground">Downloads and configures everything automatically. Just install and go.</p>
+                <p className="text-sm text-muted-foreground">
+                  Downloads and configures everything automatically. Just install and go.
+                </p>
               </div>
 
               <div className="text-center">
@@ -201,7 +208,9 @@ export default function Home() {
                   <AppleIcon className="h-6 w-6" />
                 </div>
                 <h4 className="font-semibold mb-2">Native Performance</h4>
-                <p className="text-sm text-muted-foreground">Built specifically for Mac. Fast, reliable, and integrates perfectly.</p>
+                <p className="text-sm text-muted-foreground">
+                  Built specifically for Mac. Fast, reliable, and integrates perfectly.
+                </p>
               </div>
 
               <div className="text-center">
@@ -209,7 +218,9 @@ export default function Home() {
                   <Shield className="h-6 w-6 text-primary" />
                 </div>
                 <h4 className="font-semibold mb-2">100% Private</h4>
-                <p className="text-sm text-muted-foreground">All processing happens on your Mac. Your videos never leave your computer.</p>
+                <p className="text-sm text-muted-foreground">
+                  All processing happens on your Mac. Your videos never leave your computer.
+                </p>
               </div>
             </div>
           </div>
@@ -217,7 +228,9 @@ export default function Home() {
           {/* Pricing */}
           <div className="max-w-4xl mx-auto mb-16">
             <h2 className="text-3xl font-semibold mb-4">Start free, upgrade when ready</h2>
-            <p className="text-muted-foreground mb-12">Most people upgrade after their first 3 clips</p>
+            <p className="text-muted-foreground mb-12">
+              Most people upgrade after their first 3 clips
+            </p>
 
             <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {/* Free Tier */}
@@ -244,8 +257,8 @@ export default function Home() {
                       <span className="text-sm">Full quality exports</span>
                     </div>
                   </div>
-                  <Button variant="outline" className="w-full flex items-center gap-2" size="lg">
-                    <AppleIcon className="h-4 w-4" />
+                  <Button variant="outline" size="lg">
+                    <AppleIcon />
                     Download Free
                   </Button>
                 </CardContent>
@@ -254,9 +267,7 @@ export default function Home() {
               {/* Personal License */}
               <Card className="relative border-primary border-2">
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-primary text-primary-foreground">
-                    Most Popular
-                  </Badge>
+                  <Badge className="bg-primary text-primary-foreground">Most Popular</Badge>
                 </div>
                 <CardHeader className="text-center pb-4 pt-6">
                   <Badge variant="default" className="w-fit mx-auto mb-2">
@@ -281,13 +292,12 @@ export default function Home() {
                     </div>
                   </div>
                   <Link href={`/api/checkout?products=${product.id}`} passHref>
-                    <Button className="w-full" size="lg">
+                    <Button size="lg">
+                      <AppleIcon />
                       Buy Pro - ${product.price}
                     </Button>
                   </Link>
-                  <p className="text-xs text-muted-foreground mt-2">
-                    30-day money-back guarantee
-                  </p>
+                  <p className="text-xs text-muted-foreground mt-2">30-day money-back guarantee</p>
                 </CardContent>
               </Card>
             </div>
@@ -316,9 +326,7 @@ export default function Home() {
               {/* Brand */}
               <div>
                 <div className="flex items-center justify-center gap-3 mb-4">
-                  <div className="p-2 bg-primary rounded-xl">
-                    <Scissors className="h-6 w-6 text-primary-foreground" />
-                  </div>
+                  <Image src={logo} alt="CutClip" width={40} height={40} />
                   <h3 className="text-xl font-bold">CutClip</h3>
                 </div>
                 <p className="text-muted-foreground text-sm mb-4 max-w-md">
@@ -329,13 +337,27 @@ export default function Home() {
 
               {/* Support Links */}
               <div className="flex flex-wrap justify-center gap-6 text-sm">
-                <Button variant="link" size="sm" className="h-auto p-0 text-muted-foreground hover:text-foreground">
+                <Button
+                  variant="link"
+                  size="sm"
+                  className="h-auto p-0 text-muted-foreground hover:text-foreground"
+                >
                   Support
                 </Button>
-                <Button variant="link" size="sm" className="h-auto p-0 text-muted-foreground hover:text-foreground" asChild>
+                <Button
+                  variant="link"
+                  size="sm"
+                  className="h-auto p-0 text-muted-foreground hover:text-foreground"
+                  asChild
+                >
                   <Link href="/privacy">Privacy Policy</Link>
                 </Button>
-                <Button variant="link" size="sm" className="h-auto p-0 text-muted-foreground hover:text-foreground" asChild>
+                <Button
+                  variant="link"
+                  size="sm"
+                  className="h-auto p-0 text-muted-foreground hover:text-foreground"
+                  asChild
+                >
                   <Link href="/terms">Terms of Service</Link>
                 </Button>
               </div>
