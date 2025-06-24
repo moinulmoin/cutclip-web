@@ -30,7 +30,7 @@ export async function GET(request: Request) {
     });
 
     // 2. Check if license is available for this device (not used by another device)
-    const existingLicenseUser = await prisma.user.findUnique({
+    const existingLicenseUser = await prisma.user.findFirst({
       where: { license },
       select: {
         device: {

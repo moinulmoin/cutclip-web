@@ -44,7 +44,7 @@ export async function PUT(request: NextRequest) {
     }
 
     // Find or create user with this license
-    let user = await prisma.user.findUnique({
+    let user = await prisma.user.findFirst({
       where: { license }
     });
 
