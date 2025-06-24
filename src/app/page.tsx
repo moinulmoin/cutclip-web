@@ -58,7 +58,7 @@ const structuredData = {
 };
 
 const product = {
-  id: process.env.POLAR_PRODUCT_ID!,
+  id: process.env.POLAR_PRODUCT_ID || "default-product-id",
   name: "Lifetime License (Personal Use)",
   price: 4.99
 };
@@ -69,21 +69,22 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      ></script>
       <div className="min-h-screen bg-gradient-to-br from-background to-muted/30">
         {/* Hero Section */}
         <div className="container mx-auto px-4 py-16 text-center">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Image src={logo} alt="CutClip" width={60} height={60} />
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <Image src={logo} alt="CutClip" width={60} height={60} className="float" />
             <h1 className="text-4xl font-bold tracking-tight">CutClip</h1>
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent text-balance">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent text-balance leading-tight tracking-tight">
             TURN YOUTUBE VIDEOS INTO VIRAL CLIPS
           </h2>
 
-          <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto text-balance">
-            Skip the complicated video editors. Just paste a YouTube link, set your times, and get perfect clips instantly. Built for Mac.
+          <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto text-balance leading-relaxed">
+            Skip the complicated video editors. Just paste a YouTube link, set your times, and get
+            perfect clips instantly. Built for Mac.
           </p>
 
           {/* Social Proof Numbers */}
@@ -102,13 +103,20 @@ export default function Home() {
             </div>
           </div> */}
 
-          <div className="flex gap-4 justify-center mb-16">
-            <Button size="lg" className="text-lg px-8 flex items-center gap-2" variant="outline">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <Button
+              size="lg"
+              className="hover:scale-105 transition-transform duration-200"
+              variant="outline"
+            >
               <AppleIcon className="h-5 w-5" />
               Download Free
             </Button>
             <Link href={`/api/checkout?products=${product.id}`} passHref>
-              <Button size="lg" className="text-lg px-8 flex items-center gap-2">
+              <Button
+                size="lg"
+                className="hover:scale-105 transition-transform duration-200 shadow-lg"
+              >
                 <AppleIcon className="h-5 w-5" />
                 Buy Pro - ${product.price.toFixed(2)}
               </Button>
@@ -121,12 +129,12 @@ export default function Home() {
               <Image
                 src={demo}
                 alt="CutClip Demo"
-                width={500}
-                height={500}
-                className="rounded-lg aspect-auto"
+                width={600}
+                height={600}
+                className="rounded-xl aspect-auto shadow-2xl shadow-primary/15 hover:shadow-primary/25 hover:scale-[1.02] transition-all duration-300 border border-border/20"
                 priority
               />
-              <p className="text-center text-sm text-muted-foreground mt-2">
+              <p className="text-center text-sm text-muted-foreground mt-4 max-w-md mx-auto">
                 Three simple steps: Paste → Set times → Get your viral clip. That's it.
               </p>
             </div>
@@ -188,53 +196,61 @@ export default function Home() {
           </div> */}
 
           {/* Features Section */}
-          <div className="max-w-6xl mx-auto mb-20">
-            <h3 className="text-2xl font-semibold mb-4">Why You choose CutClip</h3>
-            <p className="text-muted-foreground mb-12">The fastest way from YouTube to perfect clips</p>
+          <div className="max-w-6xl mx-auto mb-20 px-4">
+            <div className="section-divider" />
+            <h3 className="text-3xl font-bold mb-6 text-center">
+              Why You choose CutClip
+            </h3>
+            <p className="text-lg text-muted-foreground mb-16 text-center">
+              The fastest way from YouTube to perfect clips
+            </p>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Zap className="h-6 w-6 text-primary" />
+            <div className="grid md:grid-cols-3 gap-12">
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary/15 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <Zap className="h-8 w-8 text-primary" />
                 </div>
-                <h4 className="font-semibold mb-2">Zero Setup Required</h4>
-                <p className="text-sm text-muted-foreground">
-                  Install and start clipping immediately. No configuration, no headaches.
+                <h4 className="text-lg font-bold mb-4">Zero Setup Required</h4>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  Install and start clipping immediately.
                 </p>
               </div>
 
-              <div className="text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <AppleIcon className="h-6 w-6" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary/15 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <AppleIcon className="h-8 w-8" />
                 </div>
-                <h4 className="font-semibold mb-2">Lightning Fast</h4>
-                <p className="text-sm text-muted-foreground">
-                  Native Mac performance. Clips that used to take 20 minutes now take 20 seconds.
+                <h4 className="text-lg font-bold mb-4">Lightning Fast</h4>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  Native Mac performance.
                 </p>
               </div>
 
-              <div className="text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Shield className="h-6 w-6 text-primary" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary/15 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <Shield className="h-8 w-8 text-primary" />
                 </div>
-                <h4 className="font-semibold mb-2">Completely Private</h4>
-                <p className="text-sm text-muted-foreground">
-                  Your videos stay on your Mac. Zero uploads, zero cloud processing, zero worries.
+                <h4 className="text-lg font-bold mb-4">Completely Private</h4>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  Your videos stay on your Mac.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Pricing */}
-          <div className="max-w-4xl mx-auto mb-16">
-            <h2 className="text-3xl font-semibold mb-4">Start free, upgrade when ready</h2>
-            <p className="text-muted-foreground mb-12">
+          <div className="max-w-4xl mx-auto mb-16 px-4">
+            <div className="section-divider" />
+            <h2 className="text-4xl font-bold mb-6 text-center">
+              Start free, upgrade when ready
+            </h2>
+            <p className="text-lg text-muted-foreground mb-16 text-center">
               Get hooked? Most users upgrade after trying it
             </p>
 
             <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {/* Free Tier */}
-              <Card className="relative">
+              <Card className="relative hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
                 <CardHeader className="text-center pb-4">
                   <Badge variant="secondary" className="w-fit mx-auto mb-2">
                     Free
@@ -265,16 +281,20 @@ export default function Home() {
               </Card>
 
               {/* Personal License */}
-              <Card className="relative border-primary border-2">
+              <Card className="relative border-primary border-2 hover:shadow-xl hover:shadow-primary/10 hover:scale-[1.02] transition-all duration-300">
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-primary text-primary-foreground">Most Popular</Badge>
+                  <Badge className="bg-primary text-primary-foreground">
+                    Most Popular
+                  </Badge>
                 </div>
                 <CardHeader className="text-center pb-4 pt-6">
                   <Badge variant="default" className="w-fit mx-auto mb-2">
                     Pro
                   </Badge>
                   <CardTitle className="text-3xl">$4.99</CardTitle>
-                  <CardDescription>One-time purchase, yours forever</CardDescription>
+                  <CardDescription>
+                    One-time purchase, yours forever
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="text-center">
                   <div className="space-y-3 mb-6">
@@ -303,24 +323,21 @@ export default function Home() {
           </div>
 
           {/* Final CTA */}
-          <div className="bg-primary/5 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-4">Start clipping today</h3>
-            <p className="text-muted-foreground mb-6">
+          <div className="bg-gradient-to-br from-primary/5 to-background rounded-3xl p-12 max-w-4xl mx-auto text-center border border-border/20 shadow-xl">
+            <h3 className="text-3xl font-bold mb-6">Start clipping today</h3>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
               Stop wasting hours with complicated video editors. Get perfect clips in seconds.
             </p>
-            <Button size="lg">
-              <AppleIcon className="h-5 w-5" />
+            <Button size="lg" className="text-lg px-10 py-4 hover:scale-105 transition-transform duration-200 shadow-lg">
+              <AppleIcon className="h-6 w-6" />
               Download CutClip Now
             </Button>
             <p className="text-xs text-muted-foreground mt-4">
               macOS 14 or later • Free to try • No subscription required
             </p>
           </div>
-        </div>
-
-        {/* Footer */}
-        <footer className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <div className="container mx-auto px-4 py-10">
+          <footer className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-t border-border/50">
+          <div className="container mx-auto px-4 pt-16">
             <div className="flex flex-col items-center text-center space-y-8">
               {/* Brand */}
               <div>
@@ -328,15 +345,14 @@ export default function Home() {
                   <Image src={logo} alt="CutClip" width={40} height={40} />
                   <h3 className="text-xl font-bold">CutClip</h3>
                 </div>
-                <p className="text-muted-foreground text-sm mb-4 max-w-md">
+                <p className="text-muted-foreground text-base mb-6 max-w-md leading-relaxed">
                   The native macOS app that turns any YouTube video into perfect clips in seconds.
-                  Built for you who value speed and simplicity.
                 </p>
               </div>
 
               {/* Support Links */}
               <div className="flex flex-wrap justify-center gap-6 text-sm">
-                <Link href="mailto:contact@moinulmoin.com?subject=CutClip Support">
+                <Link href="mailto:contact@moinulmoin.com?subject=CutClip Support" passHref>
                   <Button
                     variant="link"
                     size="sm"
@@ -345,17 +361,16 @@ export default function Home() {
                     Support
                   </Button>
                 </Link>
-                <Link href="/privacy">
-                <Button
-                  variant="link"
-                  size="sm"
-                  className="h-auto p-0 text-muted-foreground hover:text-foreground"
-                  asChild
-                >
-                  <Link href="/privacy">Privacy Policy</Link>
-                </Button>
+                <Link href="/privacy" passHref>
+                  <Button
+                    variant="link"
+                    size="sm"
+                    className="h-auto p-0 text-muted-foreground hover:text-foreground"
+                  >
+                    Privacy Policy
+                  </Button>
                 </Link>
-                <Link href="/terms">
+                <Link href="/terms" passHref>
                   <Button
                     variant="link"
                     size="sm"
@@ -373,6 +388,7 @@ export default function Home() {
             </div>
           </div>
         </footer>
+        </div>
       </div>
     </>
   );
