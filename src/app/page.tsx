@@ -125,6 +125,7 @@ export default function Home() {
                 width={500}
                 height={500}
                 className="rounded-lg"
+                priority
               />
               <p className="text-center text-sm text-muted-foreground mt-2">
                 Paste a YouTube link, set the start and end times, and click &quot;Clip Video&quot;.
