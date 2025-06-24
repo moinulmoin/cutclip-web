@@ -24,24 +24,35 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-2xl font-semibold mb-4">2. Information We Collect</h2>
               <div className="text-muted-foreground space-y-4">
-                <h3 className="text-lg font-medium">2.1 Personal Information</h3>
+                <h3 className="text-lg font-medium">2.1 Device Identification</h3>
+                <p>To manage licensing and usage tracking, we collect:</p>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Hardware UUID from your Mac's system</li>
+                  <li>Mac serial number</li>
+                  <li>Primary network interface MAC address</li>
+                  <li>macOS version and system specifications</li>
+                  <li>Device model and CPU architecture</li>
+                </ul>
+                <p>These identifiers are combined and hashed to create a unique device ID for license management.</p>
+
+                <h3 className="text-lg font-medium">2.2 Personal Information</h3>
                 <p>We collect minimal personal information:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Email address (for Pro license purchases and support)</li>
                   <li>Payment information (processed securely by our payment processor)</li>
                 </ul>
 
-                <h3 className="text-lg font-medium">2.2 Usage Information</h3>
-                <p>We may collect basic usage analytics:</p>
+                <h3 className="text-lg font-medium">2.3 Usage and Service Data</h3>
+                <p>For service functionality, we track:</p>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>App launch and usage frequency</li>
-                  <li>Feature usage statistics</li>
-                  <li>Error reports and crash logs</li>
-                  <li>macOS version and system specifications</li>
+                  <li>Free credit usage and remaining credits</li>
+                  <li>License activation status and device linking</li>
+                  <li>Device registration timestamps</li>
+                  <li>App error occurrences and network connectivity issues</li>
                 </ul>
 
-                <h3 className="text-lg font-medium">2.3 Video Content</h3>
-                <p><strong>Important:</strong> We do NOT collect, store, or have access to your video content. All video processing happens locally on your device.</p>
+                <h3 className="text-lg font-medium">2.4 Video Content</h3>
+                <p><strong>Important:</strong> We do NOT collect, store, or have access to your video content. All video processing happens locally on your device using downloaded yt-dlp and FFmpeg binaries.</p>
               </div>
             </section>
 
@@ -50,11 +61,13 @@ export default function PrivacyPage() {
               <div className="text-muted-foreground">
                 <p className="mb-4">We use collected information to:</p>
                 <ul className="list-disc pl-6 space-y-2">
+                  <li>Create and manage unique device identifications for licensing</li>
+                  <li>Track free credit usage and enforce the 3-credit limit per device</li>
+                  <li>Validate and activate Pro license keys</li>
+                  <li>Register devices and link them to user accounts</li>
                   <li>Process Pro license purchases and provide customer support</li>
-                  <li>Improve app functionality and user experience</li>
-                  <li>Send important updates about the app (security updates, new features)</li>
-                  <li>Analyze usage patterns to enhance our services</li>
-                  <li>Troubleshoot technical issues</li>
+                  <li>Monitor app functionality and troubleshoot technical issues</li>
+                  <li>Ensure license compliance and prevent unauthorized usage</li>
                 </ul>
               </div>
             </section>
@@ -62,14 +75,17 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-2xl font-semibold mb-4">4. Data Processing and Storage</h2>
               <div className="text-muted-foreground space-y-4">
-                <h3 className="text-lg font-medium">4.1 Local Processing</h3>
-                <p>CutClip processes all video content locally on your Mac using WebCodecs technology. Your videos never leave your device.</p>
+                <h3 className="text-lg font-medium">4.1 Local Video Processing</h3>
+                <p>CutClip processes all video content locally on your Mac using downloaded yt-dlp and FFmpeg binaries. Your videos never leave your device and are temporarily stored in your system's temp directory during processing.</p>
 
-                <h3 className="text-lg font-medium">4.2 YouTube Integration</h3>
-                <p>We use Edge Functions to proxy YouTube streams for compatibility. This proxy does not store or log video content.</p>
+                <h3 className="text-lg font-medium">4.2 Device Data Transmission</h3>
+                <p>Device identification data, usage information, and license validation requests are transmitted to our backend API servers for processing. We use HTTPS encryption for all communications.</p>
 
-                <h3 className="text-lg font-medium">4.3 Data Storage</h3>
-                <p>Personal information is stored securely using industry-standard encryption. Usage analytics are anonymized and aggregated.</p>
+                <h3 className="text-lg font-medium">4.3 Local Secure Storage</h3>
+                <p>License keys and device registration data are stored locally on your Mac using the system keychain with "when unlocked this device only" security access. Device IDs are cached in UserDefaults for performance.</p>
+
+                <h3 className="text-lg font-medium">4.4 Third-Party Binary Downloads</h3>
+                <p>The app automatically downloads yt-dlp from GitHub and FFmpeg from evermeet.cx. These downloads occur over HTTPS and the binaries are stored in your app support directory.</p>
               </div>
             </section>
 
@@ -91,11 +107,14 @@ export default function PrivacyPage() {
                 <h3 className="text-lg font-medium">6.1 Payment Processing</h3>
                 <p>We use secure payment processors for Pro license purchases. They have their own privacy policies and security measures.</p>
 
-                <h3 className="text-lg font-medium">6.2 YouTube API</h3>
-                <p>CutClip interacts with YouTube's services. Your use of YouTube content is subject to YouTube's Terms of Service and Privacy Policy.</p>
+                <h3 className="text-lg font-medium">6.2 YouTube Content Access</h3>
+                <p>CutClip uses yt-dlp to download content from YouTube. Your use of YouTube content is subject to YouTube's Terms of Service and Privacy Policy. We do not directly interact with YouTube's APIs.</p>
 
-                <h3 className="text-lg font-medium">6.3 Analytics</h3>
-                <p>We may use analytics services to understand app usage. These services collect anonymized data only.</p>
+                <h3 className="text-lg font-medium">6.3 Binary Downloads</h3>
+                <p>The app downloads required binaries from external sources: yt-dlp from GitHub (github.com) and FFmpeg from evermeet.cx. These downloads are necessary for app functionality.</p>
+
+                <h3 className="text-lg font-medium">6.4 Network Monitoring</h3>
+                <p>The app monitors network connectivity by testing against youtube.com to ensure proper functionality. No personal data is transmitted during these tests.</p>
               </div>
             </section>
 
@@ -124,7 +143,7 @@ export default function PrivacyPage() {
                   <li><strong>Opt-out:</strong> Disable analytics and usage tracking</li>
                   <li><strong>Portability:</strong> Receive your data in a portable format</li>
                 </ul>
-                <p>To exercise these rights, contact us at privacy@cutclip.app.</p>
+                <p>To exercise these rights, contact us at contact@moinulmoin.com.</p>
               </div>
             </section>
 
@@ -133,10 +152,12 @@ export default function PrivacyPage() {
               <div className="text-muted-foreground space-y-4">
                 <p>We retain your information only as long as necessary:</p>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Account information: Until you request deletion</li>
+                  <li>Device registration data: Until you request deletion or device deactivation</li>
+                  <li>License activation records: For the lifetime of the license</li>
                   <li>Payment records: As required by law (typically 7 years)</li>
-                  <li>Usage analytics: Anonymized data may be retained indefinitely</li>
+                  <li>Usage credit tracking: Until device deregistration</li>
                   <li>Support communications: 2 years after resolution</li>
+                  <li>Temporary video files: Automatically deleted after 30 seconds to 1 hour</li>
                 </ul>
               </div>
             </section>
@@ -165,11 +186,7 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-2xl font-semibold mb-4">13. Contact Information</h2>
               <div className="text-muted-foreground space-y-4">
-                <p>For questions about this Privacy Policy or to exercise your privacy rights, contact us:</p>
-                <ul className="list-none space-y-2">
-                  <li><strong>Email:</strong> privacy@cutclip.app</li>
-                  <li><strong>Support:</strong> support@cutclip.app</li>
-                </ul>
+                <p>For questions about this Privacy Policy or to exercise your privacy rights, contact us at: <strong>contact@moinulmoin.com</strong></p>
               </div>
             </section>
           </div>

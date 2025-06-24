@@ -79,12 +79,11 @@ export default function Home() {
           </div>
 
           <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent text-balance">
-            CREATE CLIPS INSTANTLY
+            TURN YOUTUBE VIDEOS INTO VIRAL CLIPS
           </h2>
 
           <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto text-balance">
-            The native macOS app that turns any YouTube video into perfect clips in seconds. No more
-            wrestling with complex video editors.
+            Skip the complicated video editors. Just paste a YouTube link, set your times, and get perfect clips instantly. Built for Mac.
           </p>
 
           {/* Social Proof Numbers */}
@@ -128,7 +127,7 @@ export default function Home() {
                 priority
               />
               <p className="text-center text-sm text-muted-foreground mt-2">
-                Paste a YouTube link, set the start and end times, and click &quot;Clip Video&quot;.
+                Three simple steps: Paste → Set times → Get your viral clip. That's it.
               </p>
             </div>
           </div>
@@ -190,17 +189,17 @@ export default function Home() {
 
           {/* Features Section */}
           <div className="max-w-6xl mx-auto mb-20">
-            <h3 className="text-2xl font-semibold mb-4">Everything you need, nothing you don't</h3>
-            <p className="text-muted-foreground mb-12">Built for speed and simplicity</p>
+            <h3 className="text-2xl font-semibold mb-4">Why You choose CutClip</h3>
+            <p className="text-muted-foreground mb-12">The fastest way from YouTube to perfect clips</p>
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Zap className="h-6 w-6 text-primary" />
                 </div>
-                <h4 className="font-semibold mb-2">One-Click Setup</h4>
+                <h4 className="font-semibold mb-2">Zero Setup Required</h4>
                 <p className="text-sm text-muted-foreground">
-                  Downloads and configures everything automatically. Just install and go.
+                  Install and start clipping immediately. No configuration, no headaches.
                 </p>
               </div>
 
@@ -208,9 +207,9 @@ export default function Home() {
                 <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <AppleIcon className="h-6 w-6" />
                 </div>
-                <h4 className="font-semibold mb-2">Native Performance</h4>
+                <h4 className="font-semibold mb-2">Lightning Fast</h4>
                 <p className="text-sm text-muted-foreground">
-                  Built specifically for Mac. Fast, reliable, and integrates perfectly.
+                  Native Mac performance. Clips that used to take 20 minutes now take 20 seconds.
                 </p>
               </div>
 
@@ -218,9 +217,9 @@ export default function Home() {
                 <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Shield className="h-6 w-6 text-primary" />
                 </div>
-                <h4 className="font-semibold mb-2">100% Private</h4>
+                <h4 className="font-semibold mb-2">Completely Private</h4>
                 <p className="text-sm text-muted-foreground">
-                  All processing happens on your Mac. Your videos never leave your computer.
+                  Your videos stay on your Mac. Zero uploads, zero cloud processing, zero worries.
                 </p>
               </div>
             </div>
@@ -230,7 +229,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto mb-16">
             <h2 className="text-3xl font-semibold mb-4">Start free, upgrade when ready</h2>
             <p className="text-muted-foreground mb-12">
-              Most people upgrade after their first 3 clips
+              Get hooked? Most users upgrade after trying it
             </p>
 
             <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
@@ -247,7 +246,7 @@ export default function Home() {
                   <div className="space-y-3 mb-6">
                     <div className="flex items-center justify-center gap-2">
                       <Check className="h-4 w-4 text-primary" />
-                      <span className="text-sm">3 uses total</span>
+                      <span className="text-sm">3 free clips</span>
                     </div>
                     <div className="flex items-center justify-center gap-2">
                       <Check className="h-4 w-4 text-primary" />
@@ -298,7 +297,6 @@ export default function Home() {
                       Buy Pro - ${product.price}
                     </Button>
                   </Link>
-                  <p className="text-xs text-muted-foreground mt-2">30-day money-back guarantee</p>
                 </CardContent>
               </Card>
             </div>
@@ -306,9 +304,9 @@ export default function Home() {
 
           {/* Final CTA */}
           <div className="bg-primary/5 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-4">Join thousands of creators</h3>
+            <h3 className="text-2xl font-semibold mb-4">Start clipping today</h3>
             <p className="text-muted-foreground mb-6">
-              Stop wasting time with complicated video editors. Get perfect clips in seconds.
+              Stop wasting hours with complicated video editors. Get perfect clips in seconds.
             </p>
             <Button size="lg">
               <AppleIcon className="h-5 w-5" />
@@ -332,19 +330,22 @@ export default function Home() {
                 </div>
                 <p className="text-muted-foreground text-sm mb-4 max-w-md">
                   The native macOS app that turns any YouTube video into perfect clips in seconds.
-                  Built for creators who value speed and simplicity.
+                  Built for you who value speed and simplicity.
                 </p>
               </div>
 
               {/* Support Links */}
               <div className="flex flex-wrap justify-center gap-6 text-sm">
-                <Button
-                  variant="link"
-                  size="sm"
-                  className="h-auto p-0 text-muted-foreground hover:text-foreground"
-                >
-                  Support
-                </Button>
+                <Link href="mailto:contact@moinulmoin.com?subject=CutClip Support">
+                  <Button
+                    variant="link"
+                    size="sm"
+                    className="h-auto p-0 text-muted-foreground hover:text-foreground"
+                  >
+                    Support
+                  </Button>
+                </Link>
+                <Link href="/privacy">
                 <Button
                   variant="link"
                   size="sm"
@@ -353,14 +354,16 @@ export default function Home() {
                 >
                   <Link href="/privacy">Privacy Policy</Link>
                 </Button>
-                <Button
-                  variant="link"
-                  size="sm"
-                  className="h-auto p-0 text-muted-foreground hover:text-foreground"
-                  asChild
-                >
-                  <Link href="/terms">Terms of Service</Link>
-                </Button>
+                </Link>
+                <Link href="/terms">
+                  <Button
+                    variant="link"
+                    size="sm"
+                    className="h-auto p-0 text-muted-foreground hover:text-foreground"
+                  >
+                    Terms of Service
+                  </Button>
+                </Link>
               </div>
 
               {/* Copyright */}

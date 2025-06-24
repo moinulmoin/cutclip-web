@@ -22,10 +22,11 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">2. License Grant</h2>
+              <h2 className="text-2xl font-semibold mb-4">2. License Grant and Usage Model</h2>
               <div className="text-muted-foreground space-y-4">
-                <p><strong>Free License:</strong> We grant you a limited, non-exclusive, non-transferable license to use CutClip for personal use with up to 3 video clips total.</p>
-                <p><strong>Pro License:</strong> Upon payment of the Pro license fee, we grant you a limited, non-exclusive, non-transferable license for unlimited personal use of CutClip.</p>
+                <p><strong>Free Usage:</strong> We grant you a limited, non-exclusive, non-transferable license to use CutClip for personal use with up to 3 free credits per device. Each video clip processing consumes one credit.</p>
+                <p><strong>Pro License:</strong> Upon payment of the Pro license fee and activation with a valid license key, we grant you a limited, non-exclusive, non-transferable license for unlimited personal use of CutClip on the licensed device.</p>
+                <p><strong>Device-Based Licensing:</strong> Licenses are tied to your specific Mac device through hardware identification. Each license key can only be activated on one device.</p>
                 <p>All licenses are subject to these Terms and applicable laws.</p>
               </div>
             </section>
@@ -60,8 +61,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-2xl font-semibold mb-4">5. Payment Terms</h2>
               <div className="text-muted-foreground space-y-4">
-                <p>The Pro license is available for a one-time payment of $4.99 USD. All sales are final.</p>
-                <p><strong>Refund Policy:</strong> We offer a 30-day money-back guarantee. If you're not satisfied with CutClip Pro, contact us within 30 days of purchase for a full refund.</p>
+                <p>The Pro license is available for a one-time payment of $4.99 USD. All sales are final and non-refundable.</p>
                 <p>Prices may change at any time, but existing licenses remain valid.</p>
               </div>
             </section>
@@ -74,9 +74,12 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">7. Privacy and Data</h2>
+              <h2 className="text-2xl font-semibold mb-4">7. Privacy and Data Collection</h2>
               <div className="text-muted-foreground space-y-4">
-                <p>CutClip processes all videos locally on your device. We do not upload, store, or have access to your video content.</p>
+                <p><strong>Video Processing:</strong> CutClip processes all videos locally on your device using downloaded yt-dlp and FFmpeg binaries. We do not upload, store, or have access to your video content.</p>
+                <p><strong>Device Identification:</strong> The app collects hardware identifiers (system UUID, serial number, MAC address) to create a unique device ID for license management and usage tracking.</p>
+                <p><strong>Backend Communication:</strong> The app communicates with our servers to validate licenses, track usage credits, and register devices. This includes sending your device ID and system information.</p>
+                <p><strong>Binary Downloads:</strong> The app automatically downloads required third-party binaries (yt-dlp from GitHub, FFmpeg from evermeet.cx) for video processing functionality.</p>
                 <p>For detailed information about data collection and privacy, see our Privacy Policy.</p>
               </div>
             </section>
@@ -105,7 +108,16 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">11. Updates and Support</h2>
+              <h2 className="text-2xl font-semibold mb-4">11. Third-Party Dependencies</h2>
+              <div className="text-muted-foreground space-y-4">
+                <p><strong>External Binaries:</strong> CutClip automatically downloads and uses third-party software including yt-dlp (from GitHub) and FFmpeg (from evermeet.cx). These tools are subject to their respective licenses and terms.</p>
+                <p><strong>YouTube Integration:</strong> The app uses yt-dlp to download content from YouTube. Your use of YouTube content must comply with YouTube's Terms of Service.</p>
+                <p><strong>Network Requirements:</strong> The app requires internet connectivity for initial setup, license validation, and accessing YouTube content.</p>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">12. Updates and Support</h2>
               <div className="text-muted-foreground space-y-4">
                 <p>We may release updates to improve the Software. Updates may be automatic or require manual installation.</p>
                 <p>Pro license holders receive priority support. Free users receive limited community support.</p>
@@ -113,23 +125,37 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">12. Termination</h2>
+              <h2 className="text-2xl font-semibold mb-4">13. Service Modifications and Discontinuation</h2>
+              <div className="text-muted-foreground space-y-4">
+                <p>We reserve the right, at our sole discretion, to:</p>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Modify, suspend, or discontinue any aspect of the Software at any time</li>
+                  <li>Add, remove, or change features, functionality, or capabilities</li>
+                  <li>Cease development, support, or maintenance of the Software</li>
+                  <li>Alter the Software's operation, availability, or access requirements</li>
+                </ul>
+                <p>We may exercise these rights without prior notice and without liability to you. Your continued use of the Software after any such changes constitutes acceptance of the modifications.</p>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">14. Termination</h2>
               <div className="text-muted-foreground">
                 <p>These Terms remain in effect until terminated. We may terminate your license if you violate these Terms. Upon termination, you must stop using the Software and delete all copies.</p>
               </div>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">13. Changes to Terms</h2>
+              <h2 className="text-2xl font-semibold mb-4">15. Changes to Terms</h2>
               <div className="text-muted-foreground">
                 <p>We may update these Terms from time to time. Continued use of the Software after changes constitutes acceptance of the new Terms.</p>
               </div>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">14. Contact Information</h2>
+              <h2 className="text-2xl font-semibold mb-4">16. Contact Information</h2>
               <div className="text-muted-foreground">
-                <p>For questions about these Terms, contact us at: support@cutclip.app</p>
+                <p>For questions about these Terms, contact us at: contact@moinulmoin.com</p>
               </div>
             </section>
           </div>
