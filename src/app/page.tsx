@@ -124,7 +124,7 @@ export default function Home() {
                 alt="CutClip Demo"
                 width={500}
                 height={500}
-                className="rounded-lg"
+                className="rounded-lg aspect-auto"
                 priority
               />
               <p className="text-center text-sm text-muted-foreground mt-2">
