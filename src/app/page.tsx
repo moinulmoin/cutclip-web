@@ -9,7 +9,7 @@ import { Check, Shield, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const downloadUrl = process.env.APP_DOWNLOAD_URL || "";
+const downloadUrl = process.env.NEXT_PUBLIC_APP_DOWNLOAD_URL || "";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -60,7 +60,7 @@ const structuredData = {
 };
 
 const product = {
-  id: process.env.POLAR_PRODUCT_ID || "default-product-id",
+  id: process.env.NEXT_PUBLIC_POLAR_PRODUCT_ID || "default-product-id",
   name: "Lifetime License (Personal Use)",
   price: 4.99
 };
