@@ -4,9 +4,6 @@ import { NextResponse } from "next/server";
 
 const organizationId = process.env.POLAR_ORGANIZATION_ID!;
 
-console.log(organizationId);
-
-
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);

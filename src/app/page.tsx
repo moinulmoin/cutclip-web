@@ -9,6 +9,8 @@ import { Check, Shield, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+const downloadUrl = process.env.APP_DOWNLOAD_URL || "";
+
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -18,7 +20,7 @@ const structuredData = {
   operatingSystem: "macOS",
   description: siteConfig.description,
   url: siteConfig.url,
-  downloadUrl: `${siteConfig.url}/download`,
+  downloadUrl: downloadUrl,
   softwareVersion: "1.0",
   datePublished: "2024",
   author: {
@@ -104,14 +106,16 @@ export default function Home() {
           </div> */}
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button
-              size="lg"
-              className="hover:scale-105 transition-transform duration-200"
-              variant="outline"
-            >
-              <AppleIcon className="h-5 w-5" />
-              Download Free
-            </Button>
+            <Link href={downloadUrl} passHref>
+              <Button
+                size="lg"
+                className="hover:scale-105 transition-transform duration-200"
+                variant="outline"
+              >
+                <AppleIcon className="h-5 w-5" />
+                Download Free
+              </Button>
+            </Link>
             <Link href={`/api/checkout?products=${product.id}`} passHref>
               <Button
                 size="lg"
@@ -198,9 +202,7 @@ export default function Home() {
           {/* Features Section */}
           <div className="max-w-6xl mx-auto mb-20 px-4">
             <div className="section-divider" />
-            <h3 className="text-3xl font-bold mb-6 text-center">
-              Why You choose CutClip
-            </h3>
+            <h3 className="text-3xl font-bold mb-6 text-center">Why You choose CutClip</h3>
             <p className="text-lg text-muted-foreground mb-16 text-center">
               The fastest way from YouTube to perfect clips
             </p>
@@ -241,9 +243,7 @@ export default function Home() {
           {/* Pricing */}
           <div className="max-w-4xl mx-auto mb-16 px-4">
             <div className="section-divider" />
-            <h2 className="text-4xl font-bold mb-6 text-center">
-              Start free, upgrade when ready
-            </h2>
+            <h2 className="text-4xl font-bold mb-6 text-center">Start free, upgrade when ready</h2>
             <p className="text-lg text-muted-foreground mb-16 text-center">
               Get hooked? Most users upgrade after trying it
             </p>
@@ -273,28 +273,26 @@ export default function Home() {
                       <span className="text-sm">Full quality exports</span>
                     </div>
                   </div>
-                  <Button variant="outline" size="lg">
-                    <AppleIcon />
-                    Download Free
-                  </Button>
+                  <Link href={downloadUrl} passHref>
+                    <Button variant="outline" size="lg">
+                      <AppleIcon />
+                      Download Free
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
 
               {/* Personal License */}
               <Card className="relative border-primary border-2 hover:shadow-xl hover:shadow-primary/10 hover:scale-[1.02] transition-all duration-300">
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-primary text-primary-foreground">
-                    Most Popular
-                  </Badge>
+                  <Badge className="bg-primary text-primary-foreground">Most Popular</Badge>
                 </div>
                 <CardHeader className="text-center pb-4 pt-6">
                   <Badge variant="default" className="w-fit mx-auto mb-2">
                     Pro
                   </Badge>
                   <CardTitle className="text-3xl">$4.99</CardTitle>
-                  <CardDescription>
-                    One-time purchase, yours forever
-                  </CardDescription>
+                  <CardDescription>One-time purchase, yours forever</CardDescription>
                 </CardHeader>
                 <CardContent className="text-center">
                   <div className="space-y-3 mb-6">
@@ -328,66 +326,71 @@ export default function Home() {
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
               Stop wasting hours with complicated video editors. Get perfect clips in seconds.
             </p>
-            <Button size="lg" className="text-lg px-10 py-4 hover:scale-105 transition-transform duration-200 shadow-lg">
-              <AppleIcon className="h-6 w-6" />
-              Download CutClip Now
-            </Button>
+            <Link href={downloadUrl} passHref>
+              <Button
+                size="lg"
+                className="text-lg px-10 py-4 hover:scale-105 transition-transform duration-200 shadow-lg"
+              >
+                <AppleIcon className="h-6 w-6" />
+                Download CutClip Now
+              </Button>
+            </Link>
             <p className="text-xs text-muted-foreground mt-4">
               macOS 14 or later • Free to try • No subscription required
             </p>
           </div>
           <footer className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-t border-border/50">
-          <div className="container mx-auto px-4 pt-16">
-            <div className="flex flex-col items-center text-center space-y-8">
-              {/* Brand */}
-              <div>
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <Image src={logo} alt="CutClip" width={40} height={40} />
-                  <h3 className="text-xl font-bold">CutClip</h3>
+            <div className="container mx-auto px-4 pt-16">
+              <div className="flex flex-col items-center text-center space-y-8">
+                {/* Brand */}
+                <div>
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    <Image src={logo} alt="CutClip" width={40} height={40} />
+                    <h3 className="text-xl font-bold">CutClip</h3>
+                  </div>
+                  <p className="text-muted-foreground text-base mb-6 max-w-md leading-relaxed">
+                    The native macOS app that turns any YouTube video into perfect clips in seconds.
+                  </p>
                 </div>
-                <p className="text-muted-foreground text-base mb-6 max-w-md leading-relaxed">
-                  The native macOS app that turns any YouTube video into perfect clips in seconds.
-                </p>
-              </div>
 
-              {/* Support Links */}
-              <div className="flex flex-wrap justify-center gap-6 text-sm">
-                <Link href="mailto:contact@moinulmoin.com?subject=CutClip Support" passHref>
-                  <Button
-                    variant="link"
-                    size="sm"
-                    className="h-auto p-0 text-muted-foreground hover:text-foreground"
-                  >
-                    Support
-                  </Button>
-                </Link>
-                <Link href="/privacy" passHref>
-                  <Button
-                    variant="link"
-                    size="sm"
-                    className="h-auto p-0 text-muted-foreground hover:text-foreground"
-                  >
-                    Privacy Policy
-                  </Button>
-                </Link>
-                <Link href="/terms" passHref>
-                  <Button
-                    variant="link"
-                    size="sm"
-                    className="h-auto p-0 text-muted-foreground hover:text-foreground"
-                  >
-                    Terms of Service
-                  </Button>
-                </Link>
-              </div>
+                {/* Support Links */}
+                <div className="flex flex-wrap justify-center gap-6 text-sm">
+                  <Link href="mailto:contact@moinulmoin.com?subject=CutClip Support" passHref>
+                    <Button
+                      variant="link"
+                      size="sm"
+                      className="h-auto p-0 text-muted-foreground hover:text-foreground"
+                    >
+                      Support
+                    </Button>
+                  </Link>
+                  <Link href="/privacy" passHref>
+                    <Button
+                      variant="link"
+                      size="sm"
+                      className="h-auto p-0 text-muted-foreground hover:text-foreground"
+                    >
+                      Privacy Policy
+                    </Button>
+                  </Link>
+                  <Link href="/terms" passHref>
+                    <Button
+                      variant="link"
+                      size="sm"
+                      className="h-auto p-0 text-muted-foreground hover:text-foreground"
+                    >
+                      Terms of Service
+                    </Button>
+                  </Link>
+                </div>
 
-              {/* Copyright */}
-              <div className="text-xs text-muted-foreground">
-                © 2025 CutClip. All rights reserved.
+                {/* Copyright */}
+                <div className="text-xs text-muted-foreground">
+                  © 2025 CutClip. All rights reserved.
+                </div>
               </div>
             </div>
-          </div>
-        </footer>
+          </footer>
         </div>
       </div>
     </>
